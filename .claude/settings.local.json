@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import otree; print\\(otree.__version__\\)\")",
+      "Bash(otree check *)",
+      "Bash(otree resetdb *)"
+    ]
+  }
+}

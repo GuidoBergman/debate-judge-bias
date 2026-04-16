@@ -31,6 +31,9 @@ class Group(BaseGroup):
     # even if a participant reloads the page. Per-round field: round 2
     # gets its own fresh clock when the rejoin wait page releases.
     chat_start_time = models.FloatField()
+    # Once-per-run group-shared timer reset budget. Read/written on the
+    # round-1 group (via in_round(1)) so the budget spans both rounds.
+    reset_used = models.BooleanField(initial=False)
 
 
 class Player(BasePlayer):
@@ -71,13 +74,31 @@ class Chat(Page):
             # round-1 transcript and participants keep the same thread.
             chat_channel=player.group.in_round(1).id,
             round_number=player.round_number,
+            reset_used=player.group.in_round(1).reset_used,
         )
+
+    @staticmethod
+    def live_method(player: Player, data):
+        # Group-shared one-shot timer reset. The budget lives on the round-1
+        # group so it spans both rounds. On success, re-anchor the current
+        # round's clock and tell all 3 browsers to reload so oTree's timer
+        # re-initializes via get_timeout_seconds.
+        if not isinstance(data, dict) or data.get('action') != 'reset':
+            return
+        anchor = player.group.in_round(1)
+        if anchor.reset_used:
+            return {player.id_in_group: {'error': 'already_used'}}
+        anchor.reset_used = True
+        player.group.chat_start_time = time.time()
+        return {0: {'reload': True}}
 
 
 class RejoinWaitPage(WaitPage):
     # Non-arrival wait page: holds round-2 entry until all 3 players have
-    # clicked "finished" on round-1 Chat. On release, stamps a fresh clock
-    # onto the round-2 group so the next Chat page starts at 5:00.
+    # clicked "finished" on round-1 Chat. The round-2 clock is not stamped
+    # here — it's anchored when the first player clicks Start on the
+    # StartRound2 page so participants aren't burning time while they read
+    # the start screen.
     title_text = "Waiting for the others to finish"
     body_text = "Click continue once everyone is ready to start the next discussion."
 
@@ -87,9 +108,24 @@ class RejoinWaitPage(WaitPage):
 
     @staticmethod
     def after_all_players_arrive(group: Group):
-        group.chat_start_time = time.time()
         for p in group.get_players():
             p.survey_id = p.participant.label or ''
+
+
+class StartRound2(Page):
+    # Interstitial between RejoinWaitPage and round-2 Chat. Gives each
+    # participant an explicit "Start" click so they don't land straight in
+    # the next discussion with the timer already ticking.
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 2
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        # First player to click Start anchors the shared 5-minute deadline
+        # for the round-2 group; later clickers inherit the same clock.
+        if player.group.field_maybe_none('chat_start_time') is None:
+            player.group.chat_start_time = time.time()
 
 
 class Results(Page):
@@ -102,4 +138,4 @@ class Results(Page):
         return dict(survey_id=player.participant.label or '(no id)')
 
 
-page_sequence = [GroupingWaitPage, RejoinWaitPage, Chat, Results]
+page_sequence = [GroupingWaitPage, RejoinWaitPage, StartRound2, Chat, Results]
