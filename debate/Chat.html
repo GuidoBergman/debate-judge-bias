@@ -1,0 +1,17 @@
+{{ block title }}Discussion{{ endblock }}
+
+{{ block content }}
+
+<p>
+  You have <strong>5 minutes</strong> to discuss with the other two participants
+  (discussion {{ round_number }} of 2). The page will advance automatically when
+  time is up, or click below when you're finished.
+</p>
+
+<p class="text-muted small">Your ID: <code>{{ survey_id }}</code></p>
+
+{{ chat nickname=survey_id channel=chat_channel }}
+
+{{ next_button }}
+
+{{ endblock }}
