@@ -87,6 +87,45 @@ heroku ps:scale web=0 worker=0          # stop
 heroku logs --tail                      # live log stream for debugging
 ```
 
+## Scaling for high-concurrency sessions (e.g. 256 users)
+
+The default `web=1 worker=1` on Standard-1X is fine for small pilots but tight for
+~256 concurrent websockets. The repo is wired so the upgraded fleet can be turned
+on for a session and turned off after, without code changes.
+
+**One-time setup (already done in repo):**
+- `channels_redis` is in `requirements.txt`.
+- `settings.py` switches Django Channels onto Redis when `REDIS_URL` is set; with
+  no `REDIS_URL` (local devserver, single-dyno prod), oTree's default layer is used.
+
+**One-time on Heroku (provision Redis; ~$3/mo, leave it on):**
+
+```bash
+heroku addons:create heroku-redis:mini      # sets REDIS_URL automatically
+git push heroku main                        # deploy the channels_redis change
+heroku ps:restart                           # pick up the new CHANNEL_LAYERS
+```
+
+**Before a high-load session (≥10 min before participants arrive):**
+
+```bash
+heroku ps:type web=standard-2x worker=standard-2x
+heroku ps:scale web=2 worker=1
+```
+
+**After the session:**
+
+```bash
+heroku ps:scale web=1 worker=1
+heroku ps:type web=standard-1x worker=standard-1x
+# or, if nothing is scheduled soon:
+heroku ps:scale web=0 worker=0
+```
+
+Heroku bills dynos per-second from the monthly rate, so a 4-hour upgraded window
+costs ~$1. The realistic failure mode is forgetting to scale back down — set a
+calendar reminder.
+
 ## Open decisions (deferred)
 
 - **Wait-policy timeout.** Currently participants wait indefinitely on `GroupingWaitPage` if fewer than 3 arrive. No timeout, no dropout page, no fill-with-bots behavior. Revisit once pilot data shows arrival patterns.

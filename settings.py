@@ -45,3 +45,15 @@ Debate study: participants enter via a room URL with
 """
 
 SECRET_KEY = '3170613763936'
+
+# Multi-web-dyno support: when REDIS_URL is set (Heroku Key-Value Store add-on),
+# route Django Channels through Redis so >1 web dyno can share websocket state.
+# Local devserver and single-dyno prod fall through to oTree's default layer.
+_REDIS_URL = environ.get('REDIS_URL')
+if _REDIS_URL:
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {'hosts': [_REDIS_URL]},
+        },
+    }
