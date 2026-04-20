@@ -31,9 +31,6 @@ class Group(BaseGroup):
     # even if a participant reloads the page. Per-round field: round 2
     # gets its own fresh clock when the rejoin wait page releases.
     chat_start_time = models.FloatField()
-    # Once-per-run group-shared timer reset budget. Read/written on the
-    # round-1 group (via in_round(1)) so the budget spans both rounds.
-    reset_used = models.BooleanField(initial=False)
 
 
 class Player(BasePlayer):
@@ -74,23 +71,7 @@ class Chat(Page):
             # round-1 transcript and participants keep the same thread.
             chat_channel=player.group.in_round(1).id,
             round_number=player.round_number,
-            reset_used=player.group.in_round(1).reset_used,
         )
-
-    @staticmethod
-    def live_method(player: Player, data):
-        # Group-shared one-shot timer reset. The budget lives on the round-1
-        # group so it spans both rounds. On success, re-anchor the current
-        # round's clock and tell all 3 browsers to reload so oTree's timer
-        # re-initializes via get_timeout_seconds.
-        if not isinstance(data, dict) or data.get('action') != 'reset':
-            return
-        anchor = player.group.in_round(1)
-        if anchor.reset_used:
-            return {player.id_in_group: {'error': 'already_used'}}
-        anchor.reset_used = True
-        player.group.chat_start_time = time.time()
-        return {0: {'reload': True}}
 
 
 class RejoinWaitPage(WaitPage):

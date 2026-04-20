@@ -20,7 +20,7 @@ debate-judge-bias/
 ├── settings.py            # 82 ROOMS + single SESSION_CONFIG `debate`
 ├── debate/                # the one oTree app
 │   ├── __init__.py        # models (C, Subsession, Group, Player) + pages
-│   ├── Chat.html          # {{ chat nickname=survey_id }} + 5-min timer + reset button
+│   ├── Chat.html          # {{ chat nickname=survey_id }} + 5-min timer (auto-advances, no Next button)
 │   ├── StartRound2.html   # interstitial "Start" click before round-2 chat
 │   └── Results.html       # terminal thank-you page
 ├── _static/, Procfile, requirements.txt, __init__.py   # oTree boilerplate
@@ -36,10 +36,10 @@ calls `group_like_round(1)` so round 2 reuses the round-1 grouping.
 2. **Grouping (`GroupingWaitPage`, round 1 only).** `group_by_arrival_time = True` with `C.PLAYERS_PER_GROUP = 3`. Holds participants until 3 in the same room arrive, then forms a group. On arrival of the third player, `after_all_players_arrive` runs once:
    - Sets `Group.chat_start_time = time.time()`.
    - Copies each `participant.label` → `Player.survey_id`.
-3. **Chat (round 1).** Renders `{{ chat nickname=survey_id }}` scoped by `chat_channel = group.in_round(1).id`. `get_timeout_seconds` computes `CHAT_DURATION_SECONDS - (now - chat_start_time)` — the 5-minute clock is anchored server-side, so reloads don't reset it and all 3 share the same deadline. A **one-shot timer-reset button** is handled by `live_method`: if `reset_used` on the round-1 group is false, it flips the flag, re-anchors `chat_start_time`, and broadcasts `{reload:true}` to all 3 browsers so oTree's timer re-initializes.
+3. **Chat (round 1).** Renders `{{ chat nickname=survey_id }}` scoped by `chat_channel = group.in_round(1).id`. `get_timeout_seconds` computes `CHAT_DURATION_SECONDS - (now - chat_start_time)` — the 5-minute clock is anchored server-side, so reloads don't reset it and all 3 share the same deadline. There is **no Next button and no timer-reset button**: participants cannot quit early and the page auto-advances only when the timer hits zero.
 4. **`RejoinWaitPage` (round 2 only).** Non-arrival wait page that holds round-2 entry until all 3 players click "finished" on round-1 Chat. Does **not** stamp the round-2 clock.
 5. **`StartRound2` (round 2 only).** Interstitial with an explicit "Start" click so participants don't land straight into round 2 with the timer already ticking. The **first** player to click anchors `Group.chat_start_time` for the round-2 group; later clickers inherit that same deadline.
-6. **Chat (round 2).** Same page as round 1, with the same `chat_channel = group.in_round(1).id` — so round-2 participants see the round-1 transcript and keep chatting in the same thread. The `reset_used` budget is shared across both rounds (stored on the round-1 group via `in_round(1)`).
+6. **Chat (round 2).** Same page as round 1, with the same `chat_channel = group.in_round(1).id` — so round-2 participants see the round-1 transcript and keep chatting in the same thread.
 7. **Results.** Static thank-you page; only displayed in the final round (`round_number == C.NUM_ROUNDS`).
 
 `page_sequence = [GroupingWaitPage, RejoinWaitPage, StartRound2, Chat, Results]`.
@@ -50,7 +50,6 @@ calls `group_like_round(1)` so round 2 reuses the round-1 grouping.
 - `C.NUM_ROUNDS = 2`
 - `C.CHAT_DURATION_SECONDS = 300`  (5 minutes, per round)
 - `Group.chat_start_time: FloatField` — unix timestamp; per-round field. Round 1 stamped in `GroupingWaitPage.after_all_players_arrive`; round 2 stamped by the first `StartRound2` click.
-- `Group.reset_used: BooleanField` — one-shot timer-reset budget. Read/written on the round-1 group (via `in_round(1)`) so the budget spans both rounds.
 - `Player.survey_id: StringField` — mirror of `participant.label` for export.
 
 ## Data export / linking chat to survey

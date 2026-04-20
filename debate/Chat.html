@@ -5,38 +5,11 @@
 <p>
   You have <strong>5 minutes</strong> to discuss with the other two participants
   (discussion {{ round_number }} of 2). The page will advance automatically when
-  time is up, or click below when you're finished.
+  time is up.
 </p>
 
 <p class="text-muted small">Your ID: <code>{{ survey_id }}</code></p>
 
 {{ chat nickname=survey_id channel=chat_channel }}
-
-<p class="mt-3">
-  <button type="button" id="reset-timer-btn" class="btn btn-outline-secondary btn-sm"
-          {{ if reset_used }}disabled{{ endif }}>
-    {{ if reset_used }}Timer reset already used{{ else }}Reset timer (once per group){{ endif }}
-  </button>
-  <span id="reset-timer-msg" class="text-muted small ms-2"></span>
-</p>
-
-{{ next_button }}
-
-<script>
-  document.getElementById('reset-timer-btn').addEventListener('click', function () {
-    this.disabled = true;
-    liveSend({action: 'reset'});
-  });
-
-  function liveRecv(data) {
-    if (data.reload) {
-      window.location.reload();
-    } else if (data.error === 'already_used') {
-      var btn = document.getElementById('reset-timer-btn');
-      btn.disabled = true;
-      btn.textContent = 'Timer reset already used';
-    }
-  }
-</script>
 
 {{ endblock }}
