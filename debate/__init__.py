@@ -36,6 +36,9 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     # Copy of participant.label so it shows up in the per-app data export
     # alongside chat behavior, making the link to the survey ID explicit.
+    # Falls back to participant.code when the entry URL omits
+    # ?participant_label= (public-link path), so the nickname in chat and
+    # the ID shown on the Results page are always populated.
     survey_id = models.StringField(blank=True)
 
 
@@ -52,7 +55,7 @@ class GroupingWaitPage(WaitPage):
     def after_all_players_arrive(group: Group):
         group.chat_start_time = time.time()
         for p in group.get_players():
-            p.survey_id = p.participant.label or ''
+            p.survey_id = p.participant.label or p.participant.code
 
 
 class Chat(Page):
@@ -66,7 +69,7 @@ class Chat(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(
-            survey_id=player.participant.label or '(no id)',
+            survey_id=player.survey_id,
             # Stable channel across rounds so round-2 chat shows the
             # round-1 transcript and participants keep the same thread.
             chat_channel=player.group.in_round(1).id,
@@ -90,7 +93,7 @@ class RejoinWaitPage(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
         for p in group.get_players():
-            p.survey_id = p.participant.label or ''
+            p.survey_id = p.participant.label or p.participant.code
 
 
 class StartRound2(Page):
@@ -116,7 +119,7 @@ class Results(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        return dict(survey_id=player.participant.label or '(no id)')
+        return dict(survey_id=player.survey_id)
 
 
 page_sequence = [GroupingWaitPage, RejoinWaitPage, StartRound2, Chat, Results]

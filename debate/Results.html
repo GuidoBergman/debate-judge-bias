@@ -3,6 +3,12 @@
 {{ block content }}
 
 <p>The discussion is over. Thank you for participating.</p>
-<p class="text-muted small">Your ID: <code>{{ survey_id }}</code></p>
+
+<div class="card my-4">
+  <div class="card-body">
+    <p class="mb-2"><strong>Your participant ID:</strong></p>
+    <p class="mb-0"><code style="font-size: 1.25rem;">{{ survey_id }}</code></p>
+  </div>
+</div>
 
 {{ endblock }}

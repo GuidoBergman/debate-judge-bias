@@ -13,6 +13,8 @@ https://<server>/room/debate_room_<N>/?participant_label=<survey_id>
 - `<N>` — integer 1..82. The survey is responsible for picking which of the 82 rooms this participant goes to (oTree does not decide).
 - `<survey_id>` — any string identifying the participant in the upstream survey. oTree stores this automatically as `participant.label`, and we copy it onto `Player.survey_id` so it appears in the per-app CSV export.
 
+**Public-link entry (no `?participant_label=`).** Participants can also enter via the bare room URL `/room/debate_room_<N>/`. In that case `participant.label` is `None` and `Player.survey_id` falls back to `participant.code` (oTree's always-populated unique code), which is also shown to the participant on the Results page so they can paste it back into the survey manually. Identity across reloads during the session is maintained by oTree's room cookie — so this path assumes one browser per participant.
+
 ## File layout
 
 ```
