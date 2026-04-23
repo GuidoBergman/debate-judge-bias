@@ -15,7 +15,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'debate'
     PLAYERS_PER_GROUP = 3
     NUM_ROUNDS = 2
-    CHAT_DURATION_SECONDS = 5 * 60
+    CHAT_DURATION_SECONDS = 3 * 60
 
 
 class Subsession(BaseSubsession):
@@ -106,7 +106,7 @@ class StartRound2(Page):
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        # First player to click Start anchors the shared 5-minute deadline
+        # First player to click Start anchors the shared deadline
         # for the round-2 group; later clickers inherit the same clock.
         if player.group.field_maybe_none('chat_start_time') is None:
             player.group.chat_start_time = time.time()
