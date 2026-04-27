@@ -94,6 +94,31 @@ TOPICS: list[tuple[str, str]] = sorted(
 )
 
 
+# {(general_topic_slug, specific_topic_slug): row_index}. Lets the survey
+# pick exactly which of the 10 CSV rows within a general topic a participant
+# sees, by passing the slugified `topic` column as ?participant_label=...
+# A few CSV rows share the same `topic` text within a general topic; for the
+# 2nd, 3rd, ... occurrence we append `_2`, `_3` to keep slugs unique. The
+# 1st occurrence keeps the clean slug.
+def _build_specific_index() -> dict[tuple[str, str], int]:
+    out: dict[tuple[str, str], int] = {}
+    for general_slug, rows in PROMPTS_BY_TOPIC.items():
+        seen: dict[str, int] = {}
+        for i, row in enumerate(rows):
+            base = slugify(row['topic'])
+            seen[base] = seen.get(base, 0) + 1
+            slug = base if seen[base] == 1 else f'{base}_{seen[base]}'
+            out[(general_slug, slug)] = i
+    return out
+
+
+SPECIFIC_TOPIC_INDEX: dict[tuple[str, str], int] = _build_specific_index()
+
+
+def row_index_from_specific_slug(general_slug: str, specific_slug: str) -> int | None:
+    return SPECIFIC_TOPIC_INDEX.get((general_slug, specific_slug))
+
+
 def _beliefs_for(row: dict, assigned_statement: str) -> tuple[str, str]:
     # Per reference script: the `{general_belief_1}` placeholder always
     # holds the belief the consultant must FOLLOW, and `{general_belief_2}`

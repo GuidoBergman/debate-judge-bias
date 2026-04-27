@@ -17,6 +17,8 @@ from .prompts import (
     assigned_statement_for,
     build_round1,
     build_subsequent,
+    row_index_from_specific_slug,
+    slugify,
 )
 
 
@@ -124,15 +126,36 @@ def _consultant_count(player: Player) -> int:
 class Chat(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        if not player.field_maybe_none('survey_id'):
-            player.survey_id = player.participant.label or player.participant.code
+        # The survey can pass either:
+        #   (a) a specific-topic slug (matches the slugified CSV `topic`
+        #       column for this general topic) — used to pick the row.
+        #   (b) any other free-form label — treated as the survey ID.
+        # Detecting which one we got: try the slug lookup first.
+        label = (player.participant.label or '').strip()
+        label_slug = slugify(label) if label else ''
+        topic_slug = _topic_slug(player)
+        specific_idx = row_index_from_specific_slug(topic_slug, label_slug)
 
-        # Self-heal row_index / defending_statement if creating_session didn't
-        # populate them. Some session-creation paths (notably the demo flow,
-        # and sessions created before this code landed) leave them null.
+        # Override row_index from the URL — but only BEFORE Round 1 has been
+        # generated, otherwise we'd swap topics mid-conversation.
+        if specific_idx is not None and not _turns(player):
+            player.row_index = specific_idx
+            player.defending_statement = assigned_statement_for(specific_idx)
+
+        # Self-heal row_index / defending_statement if neither
+        # creating_session nor a label match populated them.
         if player.field_maybe_none('row_index') is None:
             player.row_index = player.id_in_subsession - 1
             player.defending_statement = assigned_statement_for(player.row_index)
+
+        # survey_id: when the label was the topic slug, fall back to
+        # participant.code so the Results page still shows a unique ID. When
+        # the label was free-form, treat it as the survey ID.
+        if not player.field_maybe_none('survey_id'):
+            if specific_idx is not None:
+                player.survey_id = player.participant.code
+            else:
+                player.survey_id = label or player.participant.code
 
         existing = _turns(player)
         if not existing:
