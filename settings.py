@@ -7,12 +7,35 @@ environ.setdefault('OTREE_ADMIN_PASSWORD', 'AdminDebate')
 
 NUM_ROOMS = 82
 
+# Consultancy topics — slug (URL) + admin display name. Slugs are derived
+# from the `general_topic` column of dataset_consultancy.csv; each slug has
+# 10 prompt variants in that CSV (100 total). Room name convention mirrors
+# the debate app: `<app>_room_<identifier>`.
+CONSULT_TOPICS = [
+    ('3d_bioprinting', '3D Bioprinting'),
+    ('confirmation_of_the_existence_of_exoplanets', 'Confirmation of the Existence of Exoplanets'),
+    ('controlled_nuclear_fusion', 'Controlled Nuclear Fusion'),
+    ('exascale_computing', 'Exascale Computing'),
+    ('imaging_black_holes', 'Imaging Black Holes'),
+    ('lab_grown_embryo_models', 'Lab-grown Embryo Models'),
+    ('mirror_life', 'Mirror Life'),
+    ('operational_quantum_computers', 'Operational Quantum Computers'),
+    ('spacecraft_capable_of_taking_civilians_to_space', 'Spacecraft Capable of Taking Civilians to Space'),
+    ('supersonic_aircrafts', 'Supersonic Aircrafts'),
+]
+
 ROOMS = [
     dict(
         name=f'debate_room_{i}',
         display_name=f'Debate Room {i}',
     )
     for i in range(1, NUM_ROOMS + 1)
+] + [
+    dict(
+        name=f'consult_room_{slug}',
+        display_name=f'Consultancy: {name}',
+    )
+    for slug, name in CONSULT_TOPICS
 ]
 
 SESSION_CONFIGS = [
@@ -22,6 +45,18 @@ SESSION_CONFIGS = [
         app_sequence=['debate'],
         num_demo_participants=3,
     ),
+] + [
+    # One session config per topic. `topic_slug` is read by consult/__init__.py
+    # to look up the right prompt list. Bind admin-created sessions to the
+    # matching `consult_room_<slug>` room (name parity keeps this obvious).
+    dict(
+        name=f'consult_{slug}',
+        display_name=f'Consultancy: {name}',
+        app_sequence=['consult'],
+        num_demo_participants=10,
+        topic_slug=slug,
+    )
+    for slug, name in CONSULT_TOPICS
 ]
 
 SESSION_CONFIG_DEFAULTS = dict(

@@ -1,6 +1,5 @@
-# oTree-may-overwrite-this-file
-# IF YOU MODIFY THIS FILE, remove this comment.
-# otherwise, oTree will automatically overwrite it.
 otree>=5.0.0a21
 psycopg2>=2.8.4
 channels_redis>=4.0.0
+anthropic>=0.40.0
+python-dotenv>=1.0.0

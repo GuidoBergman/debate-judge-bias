@@ -1,0 +1,124 @@
+{{ block title }}Consultancy{{ endblock }}
+
+{{ block content }}
+
+<style>
+  /* Hide oTree's default Next button — our "Continue" button below is a
+     type="submit" inside the same form, so it advances via the same path. */
+  .otree-btn-next, button.otree-btn-next { display: none !important; }
+
+  #consult-log {
+    height: 420px; overflow-y: auto;
+    border: 1px solid #ccc; padding: 10px; background: #fafafa;
+  }
+  #consult-log .turn { margin-bottom: 0.9em; line-height: 1.4; white-space: pre-wrap; }
+  #consult-log .speaker { font-weight: 600; }
+  #consult-log .turn.consultant .speaker { color: #333; }
+  #consult-log .turn.judge .speaker { color: #0b5ed7; }
+  #consult-send { display: flex; gap: 6px; margin-top: 10px; }
+  #consult-send input { flex: 1; }
+  #status { margin-top: 6px; color: #6c757d; font-style: italic; min-height: 1.2em; }
+  #continue-btn { margin-top: 12px; }
+</style>
+
+<p>
+  You are acting as <strong>judge</strong>. The consultant will make
+  <strong>3 arguments</strong>. Between arguments, you may ask follow-up
+  questions.
+</p>
+<p class="text-muted small">Your ID: <code>{{ survey_id }}</code></p>
+
+<div id="consult-log">
+  {{ for t in transcript }}
+    <div class="turn {{ t.speaker_class }}">
+      <span class="speaker">{{ t.speaker }}:</span>
+      {{ t.text }}
+    </div>
+  {{ endfor }}
+</div>
+
+<div id="consult-send" {{ if done }}style="display:none"{{ endif }}>
+  <input id="consult-input" autocomplete="off" maxlength="500"
+         placeholder="Ask a follow-up question...">
+  <button type="button" id="consult-send-btn">Send</button>
+</div>
+<div id="status"></div>
+
+<button type="submit" id="continue-btn" class="btn btn-primary"
+        {{ if done }}{{ else }}style="display:none"{{ endif }}>
+  Continue
+</button>
+
+<script>
+  const log = document.getElementById('consult-log');
+  const input = document.getElementById('consult-input');
+  const sendForm = document.getElementById('consult-send');
+  const sendBtn = document.getElementById('consult-send-btn');
+  const status = document.getElementById('status');
+  const cont = document.getElementById('continue-btn');
+  log.scrollTop = log.scrollHeight;
+
+  sendBtn.addEventListener('click', sendQuestion);
+  // Submit on Enter (no surrounding <form> any more — see HTML above).
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendQuestion();
+    }
+  });
+
+  function append(m) {
+    const row = document.createElement('div');
+    row.className = 'turn ' + m.speaker.toLowerCase();
+    const sp = document.createElement('span');
+    sp.className = 'speaker';
+    sp.textContent = m.speaker + ': ';
+    row.appendChild(sp);
+    row.appendChild(document.createTextNode(m.text));
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function setBusy(busy, msg) {
+    input.disabled = busy;
+    sendBtn.disabled = busy;
+    status.textContent = msg || '';
+  }
+
+  function finish() {
+    sendForm.style.display = 'none';
+    cont.style.display = 'inline-block';
+    setBusy(false, '');
+  }
+
+  function sendQuestion() {
+    const v = input.value.trim();
+    if (!v) return;
+    input.value = '';
+    setBusy(true, 'Consultant is thinking…');
+    liveSend({text: v});
+  }
+
+  function liveRecv(data) {
+    if (data.error) {
+      setBusy(false, data.error);
+      return;
+    }
+    if (data.msgs) {
+      data.msgs.forEach(append);
+    }
+    // Always clear the busy state — never leave "Consultant is thinking…"
+    // hanging because of an unexpected payload shape.
+    setBusy(false, '');
+    // Authoritative client-side check: count consultant rows in the log,
+    // and if we've reached the cap, finish regardless of `data.done`.
+    const consultantCount = log.querySelectorAll('.turn.consultant').length;
+    if (data.done || consultantCount >= 3) {
+      finish();
+    } else {
+      input.focus();
+    }
+  }
+</script>
+
+{{ endblock }}
