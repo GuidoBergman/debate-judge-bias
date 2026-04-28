@@ -14,9 +14,9 @@ from .llm import call_consultant
 from .prompts import (
     PROMPTS_BY_TOPIC,
     SYSTEM_PROMPT,
-    assigned_statement_for,
     build_round1,
     build_subsequent,
+    random_statement,
     row_index_from_specific_slug,
     slugify,
 )
@@ -41,11 +41,10 @@ class Subsession(BaseSubsession):
         # Assign each pre-created slot a prompt row by its arrival-order index.
         # id_in_subsession is 1..N as slots are claimed by real arrivals, so
         # row_index maps directly to the ordered CSV rows within this topic.
-        # defending_statement alternates even/odd → 5 × Statement 1 and
-        # 5 × Statement 2 per 10-slot topic session (balanced).
+        # defending_statement is drawn uniformly at random per participant.
         for p in self.get_players():
             p.row_index = p.id_in_subsession - 1
-            p.defending_statement = assigned_statement_for(p.row_index)
+            p.defending_statement = random_statement()
 
 
 class Group(BaseGroup):
@@ -60,7 +59,7 @@ class Player(BasePlayer):
     # 0-based index into PROMPTS_BY_TOPIC[topic_slug]. Set in creating_session.
     row_index = models.IntegerField()
     # "Statement 1" or "Statement 2" — which side the LLM argues. Set in
-    # creating_session by alternating row_index parity for balance. Exported.
+    # creating_session by drawing uniformly at random per participant. Exported.
     defending_statement = models.StringField()
 
 
@@ -140,13 +139,15 @@ class Chat(Page):
         # generated, otherwise we'd swap topics mid-conversation.
         if specific_idx is not None and not _turns(player):
             player.row_index = specific_idx
-            player.defending_statement = assigned_statement_for(specific_idx)
+            if not player.field_maybe_none('defending_statement'):
+                player.defending_statement = random_statement()
 
         # Self-heal row_index / defending_statement if neither
         # creating_session nor a label match populated them.
         if player.field_maybe_none('row_index') is None:
             player.row_index = player.id_in_subsession - 1
-            player.defending_statement = assigned_statement_for(player.row_index)
+        if not player.field_maybe_none('defending_statement'):
+            player.defending_statement = random_statement()
 
         # survey_id: when the label was the topic slug, fall back to
         # participant.code so the Results page still shows a unique ID. When
