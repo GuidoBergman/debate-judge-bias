@@ -3,12 +3,59 @@
 {{ block content }}
 
 <p>
-  You have <strong>3 minutes</strong> to discuss with the other two participants.
-  The page will advance automatically when time is up.
+  The discussion will continue until the coordinator closes the room.
 </p>
 
 <p class="text-muted small">Your ID: <code>{{ survey_id }}</code></p>
 
 {{ chat nickname=survey_id channel=chat_channel }}
+
+{{ if is_coordinator }}
+  <div class="mt-4 p-3 border rounded bg-light">
+    <button type="button" id="close-room-btn" class="btn btn-danger">
+      Close room
+    </button>
+    <p class="text-muted small mb-0 mt-2">
+      Coordinator only. Closing the room ends the discussion for everyone
+      and advances all participants to the thank-you page.
+    </p>
+  </div>
+{{ endif }}
+
+<style>
+  /* Hide oTree's default Next button — the page only advances when the
+     coordinator closes the room (signal received via liveRecv). */
+  .otree-btn-next, button[name="next_button"] { display: none !important; }
+</style>
+
+<script>
+  (function () {
+    function advance() {
+      var form = document.querySelector('form');
+      if (form) form.submit();
+    }
+
+    // oTree calls window.liveRecv with whatever live_method returned for us.
+    window.liveRecv = function (data) {
+      if (data && data.closed) advance();
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initial state check — if the room was already closed before this
+      // tab loaded, advance immediately (handles latecomers / reloads).
+      try { liveSend({ action: 'check' }); } catch (e) {}
+
+      var btn = document.getElementById('close-room-btn');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          if (!confirm('Close the room for everyone?')) return;
+          btn.disabled = true;
+          btn.textContent = 'Closing…';
+          liveSend({ action: 'close' });
+        });
+      }
+    });
+  })();
+</script>
 
 {{ endblock }}

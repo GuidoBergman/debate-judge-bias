@@ -41,9 +41,12 @@ ROOMS = [
 SESSION_CONFIGS = [
     dict(
         name='debate',
-        display_name='Debate (3-person chat, 5 min)',
+        display_name='Debate (open chat, coordinator-closed)',
         app_sequence=['debate'],
-        num_demo_participants=3,
+        # No fixed group size — set num_participants when creating a session
+        # to the max expected attendance for that room. The coordinator is
+        # one of those participants (enters with ?participant_label=coordinator).
+        num_demo_participants=10,
     ),
 ] + [
     # One session config per topic. `topic_slug` is read by consult/__init__.py
@@ -76,7 +79,9 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """
 Debate study: participants enter via a room URL with
-<code>?participant_label=&lt;id&gt;</code> and are grouped 3-per-room.
+<code>?participant_label=&lt;id&gt;</code>. One participant joins as
+<code>?participant_label=coordinator</code> and gets a "Close room" button
+that ends the chat for everyone.
 """
 
 SECRET_KEY = '3170613763936'
