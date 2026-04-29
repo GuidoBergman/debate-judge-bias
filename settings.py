@@ -84,11 +84,23 @@ SECRET_KEY = '3170613763936'
 # Multi-web-dyno support: when REDIS_URL is set (Heroku Key-Value Store add-on),
 # route Django Channels through Redis so >1 web dyno can share websocket state.
 # Local devserver and single-dyno prod fall through to oTree's default layer.
+#
+# Heroku Key-Value Store hands out `rediss://` URLs (TLS) with a self-signed
+# cert, so we must disable cert verification — otherwise channels_redis fails
+# to connect silently on boot and each dyno falls back to its in-memory layer,
+# breaking cross-dyno wait pages and chat fan-out.
 _REDIS_URL = environ.get('REDIS_URL')
 if _REDIS_URL:
+    _host = {'address': _REDIS_URL}
+    if _REDIS_URL.startswith('rediss://'):
+        import ssl
+        _ssl_ctx = ssl.create_default_context()
+        _ssl_ctx.check_hostname = False
+        _ssl_ctx.verify_mode = ssl.CERT_NONE
+        _host['ssl'] = _ssl_ctx
     CHANNEL_LAYERS = {
         'default': {
             'BACKEND': 'channels_redis.core.RedisChannelLayer',
-            'CONFIG': {'hosts': [_REDIS_URL]},
+            'CONFIG': {'hosts': [_host]},
         },
     }
