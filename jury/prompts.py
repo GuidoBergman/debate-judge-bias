@@ -66,7 +66,7 @@ SUBSEQUENT_TEMPLATE = """Here is the transcript of the debate:
 {transcript}
 </transcript>
 
-Now it's your turn to provide an argument."""
+Now it's your turn to provide an argument. Do not exceed 50 words."""
 
 
 def _load_personas() -> tuple[list[dict], list[dict]]:
