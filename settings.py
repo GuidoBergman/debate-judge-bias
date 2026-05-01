@@ -24,6 +24,15 @@ CONSULT_TOPICS = [
     ('supersonic_aircrafts', 'Supersonic Aircrafts'),
 ]
 
+# Jury (multi-judge hybrid): one room per specific-topic row of the dataset,
+# 100 total. Each session for a given specific topic can host many human
+# judges in parallel — every arrival claims its own participant slot, so 5
+# participants visiting the same link each get their own deliberation with
+# their own pair of LLM judges. The topic list is loaded from a top-level
+# helper (dataset_topics.py) — NOT from jury.prompts — so this import does
+# not pull oTree's app machinery into a partially-initialized settings load.
+from dataset_topics import SPECIFIC_TOPICS as JURY_TOPICS  # (slug, general, specific)
+
 ROOMS = [
     dict(
         name=f'debate_room_{i}',
@@ -36,6 +45,12 @@ ROOMS = [
         display_name=f'Consultancy: {name}',
     )
     for slug, name in CONSULT_TOPICS
+] + [
+    dict(
+        name=f'jury_room_{slug}',
+        display_name=f'Jury: {general} — {specific}',
+    )
+    for slug, general, specific in JURY_TOPICS
 ]
 
 SESSION_CONFIGS = [
@@ -60,6 +75,20 @@ SESSION_CONFIGS = [
         topic_slug=slug,
     )
     for slug, name in CONSULT_TOPICS
+] + [
+    # One session config per specific-topic slug for the jury app. Each
+    # session can host many participants (every arrival = a brand-new
+    # 3-judge deliberation with a freshly-randomized LLM/persona/order
+    # assignment); set num_participants generously when creating the session
+    # for high-traffic topics. Bind to the matching `jury_room_<slug>` room.
+    dict(
+        name=f'jury_{slug}',
+        display_name=f'Jury: {general} — {specific}',
+        app_sequence=['jury'],
+        num_demo_participants=10,
+        topic_slug=slug,
+    )
+    for slug, general, specific in JURY_TOPICS
 ]
 
 SESSION_CONFIG_DEFAULTS = dict(

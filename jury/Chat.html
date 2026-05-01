@@ -1,0 +1,129 @@
+{{ block title }}Deliberation{{ endblock }}
+
+{{ block content }}
+
+<style>
+  .otree-btn-next, button.otree-btn-next { display: none !important; }
+
+  #jury-log {
+    height: 460px; overflow-y: auto;
+    border: 1px solid #ccc; padding: 10px; background: #fafafa;
+  }
+  #jury-log .turn { margin-bottom: 0.9em; line-height: 1.45; white-space: pre-wrap; }
+  #jury-log .speaker { font-weight: 600; }
+  #jury-log .turn.judge_1 .speaker { color: #6f42c1; }
+  #jury-log .turn.judge_2 .speaker { color: #198754; }
+  #jury-log .turn.judge_3 .speaker { color: #0b5ed7; }
+  #jury-send { display: flex; gap: 6px; margin-top: 10px; }
+  #jury-send textarea { flex: 1; min-height: 60px; resize: vertical; }
+  #status { margin-top: 6px; color: #6c757d; font-style: italic; min-height: 1.2em; }
+  #continue-btn { margin-top: 12px; }
+  #round-banner {
+    margin-bottom: 10px; padding: 8px 12px;
+    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 6px;
+    font-weight: 500;
+  }
+</style>
+
+<p>
+  You are <strong>Judge 3</strong> on a panel of three judges. Two other
+  judges will argue first; your job is to deliberate with them across
+  <strong>3 rounds</strong>. Keep each turn to about <strong>50 words</strong>.
+</p>
+<p class="text-muted small">
+  Topic: <strong>{{ topic_specific }}</strong> &middot;
+  Your ID: <code>{{ survey_id }}</code>
+</p>
+
+<div id="round-banner">
+  Round <span id="round-num">{{ round_number }}</span> of {{ total_rounds }}
+</div>
+
+<div id="jury-log">
+  {{ for t in transcript }}
+    <div class="turn {{ t.speaker_class }}">
+      <span class="speaker">{{ t.speaker }}:</span>
+      {{ t.text }}
+    </div>
+  {{ endfor }}
+</div>
+
+<div id="jury-send" {{ if done }}style="display:none"{{ endif }}>
+  <textarea id="jury-input" autocomplete="off" maxlength="1500"
+            placeholder="Your argument (about 50 words)…"></textarea>
+  <button type="button" id="jury-send-btn" class="btn btn-primary">Send</button>
+</div>
+<div id="status">{{ if error }}{{ error }}{{ endif }}</div>
+
+<button type="submit" id="continue-btn" class="btn btn-primary"
+        {{ if done }}{{ else }}style="display:none"{{ endif }}>
+  Continue
+</button>
+
+<script>
+  const log = document.getElementById('jury-log');
+  const input = document.getElementById('jury-input');
+  const sendForm = document.getElementById('jury-send');
+  const sendBtn = document.getElementById('jury-send-btn');
+  const status = document.getElementById('status');
+  const cont = document.getElementById('continue-btn');
+  const roundLabel = document.getElementById('round-num');
+  const totalRounds = {{ total_rounds }};
+  log.scrollTop = log.scrollHeight;
+
+  sendBtn.addEventListener('click', sendArgument);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendArgument();
+    }
+  });
+
+  function append(m) {
+    const row = document.createElement('div');
+    row.className = 'turn ' + m.speaker_class;
+    const sp = document.createElement('span');
+    sp.className = 'speaker';
+    sp.textContent = m.speaker + ': ';
+    row.appendChild(sp);
+    row.appendChild(document.createTextNode(m.text));
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function setBusy(busy, msg) {
+    input.disabled = busy;
+    sendBtn.disabled = busy;
+    status.textContent = msg || '';
+  }
+
+  function finish() {
+    sendForm.style.display = 'none';
+    cont.style.display = 'inline-block';
+    setBusy(false, '');
+  }
+
+  function sendArgument() {
+    const v = input.value.trim();
+    if (!v) return;
+    input.value = '';
+    setBusy(true, 'The other judges are deliberating…');
+    liveSend({action: 'submit', text: v});
+  }
+
+  function liveRecv(data) {
+    if (data.error) {
+      setBusy(false, data.error);
+    } else {
+      setBusy(false, '');
+    }
+    if (data.msgs) data.msgs.forEach(append);
+    if (typeof data.round_number === 'number') {
+      roundLabel.textContent = String(Math.min(data.round_number, totalRounds));
+    }
+    if (data.done) finish();
+    else if (!data.error) input.focus();
+  }
+</script>
+
+{{ endblock }}

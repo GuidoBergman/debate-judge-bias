@@ -1,0 +1,301 @@
+debate_number,judge_number,debate_seed,persona_seed,majority_type,belief_type,general_belief,demographic_info
+1,1,1,1,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | man | lifelong Republican
+1,2,1,2,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Jewish person | African person | man | lifelong Democrat
+1,3,1,3,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | African person | transgender man | lifelong Democrat
+2,1,2,4,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Asian person | transgender man | lifelong Republican
+2,2,2,5,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Asian person | woman | lifelong Democrat
+2,3,2,6,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Hispanic person | transgender man | lifelong Democrat
+3,1,3,7,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | transgender man | lifelong Democrat
+3,2,3,8,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Asian person | man | lifelong Republican
+3,3,3,9,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | African person | woman | lifelong Democrat
+4,1,4,10,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Hispanic person | woman | lifelong Republican
+4,2,4,11,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Hispanic person | transgender man | lifelong Democrat
+4,3,4,12,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Asian person | man | lifelong Democrat
+5,1,5,13,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | African person | man | lifelong Republican
+5,2,5,14,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | African person | non-binary person | lifelong Democrat
+5,3,5,15,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Caucasian person | man | lifelong Democrat
+6,1,6,16,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | African person | man | lifelong Democrat
+6,2,6,17,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | African person | non-binary person | lifelong Democrat
+6,3,6,18,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Caucasian person | non-binary person | lifelong Democrat
+7,1,7,19,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Religious person | Caucasian person | woman | lifelong Republican
+7,2,7,20,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Hispanic person | non-binary person | lifelong Republican
+7,3,7,21,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | woman | lifelong Democrat
+8,1,8,22,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Religious person | Hispanic person | non-binary person | lifelong Democrat
+8,2,8,23,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Caucasian person | woman | lifelong Democrat
+8,3,8,24,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Hispanic person | man | lifelong Democrat
+9,1,9,25,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | African person | transgender man | lifelong Democrat
+9,2,9,26,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Asian person | man | lifelong Republican
+9,3,9,27,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | African person | woman | lifelong Democrat
+10,1,10,28,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Hispanic person | transgender man | lifelong Republican
+10,2,10,29,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | Asian person | woman | lifelong Democrat
+10,3,10,30,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Hispanic person | non-binary person | lifelong Democrat
+11,1,11,31,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | transgender man | lifelong Democrat
+11,2,11,32,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Asian person | non-binary person | lifelong Democrat
+11,3,11,33,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Caucasian person | transgender man | lifelong Democrat
+12,1,12,34,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Asian person | man | lifelong Democrat
+12,2,12,35,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | African person | man | lifelong Republican
+12,3,12,36,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | African person | non-binary person | lifelong Republican
+13,1,13,37,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Caucasian person | woman | lifelong Republican
+13,2,13,38,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Hispanic person | woman | lifelong Republican
+13,3,13,39,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Hispanic person | transgender man | lifelong Republican
+14,1,14,40,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Asian person | non-binary person | lifelong Democrat
+14,2,14,41,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Caucasian person | man | lifelong Democrat
+14,3,14,42,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | transgender man | lifelong Democrat
+15,1,15,43,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Jewish person | Asian person | man | lifelong Republican
+15,2,15,44,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | African person | transgender man | lifelong Republican
+15,3,15,45,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Asian person | non-binary person | lifelong Republican
+16,1,16,46,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Caucasian person | transgender man | lifelong Republican
+16,2,16,47,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Asian person | man | lifelong Democrat
+16,3,16,48,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | African person | transgender man | lifelong Democrat
+17,1,17,49,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Asian person | man | lifelong Democrat
+17,2,17,50,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | African person | transgender man | lifelong Democrat
+17,3,17,51,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Asian person | man | lifelong Democrat
+18,1,18,52,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | African person | transgender man | lifelong Democrat
+18,2,18,53,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Asian person | man | lifelong Democrat
+18,3,18,54,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | African person | transgender man | lifelong Democrat
+19,1,19,55,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Asian person | transgender man | lifelong Democrat
+19,2,19,56,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Asian person | transgender man | lifelong Democrat
+19,3,19,57,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Asian person | woman | lifelong Republican
+20,1,20,58,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Hispanic person | non-binary person | lifelong Republican
+20,2,20,59,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | transgender man | lifelong Republican
+20,3,20,60,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Religious person | Asian person | non-binary person | lifelong Republican
+21,1,21,61,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Caucasian person | man | lifelong Republican
+21,2,21,62,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | African person | transgender man | lifelong Democrat
+21,3,21,63,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Asian person | transgender man | lifelong Democrat
+22,1,22,64,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Asian person | man | lifelong Republican
+22,2,22,65,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | African person | man | lifelong Republican
+22,3,22,66,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | African person | woman | lifelong Democrat
+23,1,23,67,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Hispanic person | man | lifelong Republican
+23,2,23,68,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | African person | woman | lifelong Republican
+23,3,23,69,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Jewish person | Hispanic person | woman | lifelong Republican
+24,1,24,70,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Hispanic person | man | lifelong Republican
+24,2,24,71,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | African person | transgender man | lifelong Democrat
+24,3,24,72,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Jewish person | Asian person | non-binary person | lifelong Democrat
+25,1,25,73,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Caucasian person | woman | lifelong Democrat
+25,2,25,74,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Hispanic person | man | lifelong Democrat
+25,3,25,75,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | African person | transgender man | lifelong Democrat
+26,1,26,76,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Asian person | woman | lifelong Democrat
+26,2,26,77,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Hispanic person | transgender man | lifelong Democrat
+26,3,26,78,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | man | lifelong Republican
+27,1,27,79,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | African person | non-binary person | lifelong Republican
+27,2,27,80,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Caucasian person | man | lifelong Republican
+27,3,27,81,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | African person | non-binary person | lifelong Republican
+28,1,28,82,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Caucasian person | woman | lifelong Republican
+28,2,28,83,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Hispanic person | man | lifelong Republican
+28,3,28,84,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | African person | transgender man | lifelong Democrat
+29,1,29,85,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Asian person | woman | lifelong Democrat
+29,2,29,86,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Hispanic person | transgender man | lifelong Republican
+29,3,29,87,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Asian person | woman | lifelong Republican
+30,1,30,88,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Hispanic person | man | lifelong Democrat
+30,2,30,89,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | African person | non-binary person | lifelong Democrat
+30,3,30,90,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Caucasian person | woman | lifelong Republican
+31,1,31,91,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Hispanic person | man | lifelong Republican
+31,2,31,92,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | African person | woman | lifelong Republican
+31,3,31,93,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Hispanic person | man | lifelong Republican
+32,1,32,94,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | African person | woman | lifelong Democrat
+32,2,32,95,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Hispanic person | transgender man | lifelong Republican
+32,3,32,96,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Asian person | transgender man | lifelong Democrat
+33,1,33,97,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Asian person | transgender man | lifelong Republican
+33,2,33,98,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Asian person | woman | lifelong Democrat
+33,3,33,99,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Hispanic person | man | lifelong Democrat
+34,1,34,100,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | African person | man | lifelong Republican
+34,2,34,101,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | African person | transgender man | lifelong Republican
+34,3,34,102,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Asian person | man | lifelong Republican
+35,1,35,103,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | African person | non-binary person | lifelong Democrat
+35,2,35,104,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Jewish person | Caucasian person | man | lifelong Republican
+35,3,35,105,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | man | lifelong Republican
+36,1,36,106,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Jewish person | African person | non-binary person | lifelong Republican
+36,2,36,107,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Caucasian person | woman | lifelong Republican
+36,3,36,108,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Hispanic person | woman | lifelong Democrat
+37,1,37,109,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Hispanic person | non-binary person | lifelong Republican
+37,2,37,110,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Caucasian person | woman | lifelong Republican
+37,3,37,111,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Hispanic person | non-binary person | lifelong Democrat
+38,1,38,112,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | non-binary person | lifelong Republican
+38,2,38,113,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Caucasian person | woman | lifelong Republican
+38,3,38,114,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Hispanic person | non-binary person | lifelong Republican
+39,1,39,115,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | woman | lifelong Democrat
+39,2,39,116,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Hispanic person | woman | lifelong Republican
+39,3,39,117,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Hispanic person | non-binary person | lifelong Democrat
+40,1,40,118,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Caucasian person | woman | lifelong Republican
+40,2,40,119,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Hispanic person | non-binary person | lifelong Republican
+40,3,40,120,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Caucasian person | non-binary person | lifelong Democrat
+41,1,41,121,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Religious person | Caucasian person | transgender man | lifelong Republican
+41,2,41,122,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Asian person | man | lifelong Democrat
+41,3,41,123,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | African person | non-binary person | lifelong Republican
+42,1,42,124,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Caucasian person | non-binary person | lifelong Democrat
+42,2,42,125,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Caucasian person | woman | lifelong Democrat
+42,3,42,126,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Religious person | Hispanic person | man | lifelong Democrat
+43,1,43,127,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | African person | woman | lifelong Democrat
+43,2,43,128,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Hispanic person | man | lifelong Democrat
+43,3,43,129,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | African person | non-binary person | lifelong Democrat
+44,1,44,130,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Caucasian person | woman | lifelong Democrat
+44,2,44,131,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Hispanic person | transgender man | lifelong Democrat
+44,3,44,132,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | transgender man | lifelong Republican
+45,1,45,133,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Asian person | man | lifelong Republican
+45,2,45,134,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | African person | man | lifelong Republican
+45,3,45,135,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | African person | woman | lifelong Republican
+46,1,46,136,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Hispanic person | non-binary person | lifelong Republican
+46,2,46,137,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Caucasian person | man | lifelong Democrat
+46,3,46,138,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | man | lifelong Republican
+47,1,47,139,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | African person | man | lifelong Democrat
+47,2,47,140,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | African person | woman | lifelong Democrat
+47,3,47,141,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Hispanic person | transgender man | lifelong Democrat
+48,1,48,142,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Asian person | man | lifelong Republican
+48,2,48,143,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | African person | non-binary person | lifelong Democrat
+48,3,48,144,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Caucasian person | man | lifelong Democrat
+49,1,49,145,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | African person | transgender man | lifelong Republican
+49,2,49,146,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Asian person | non-binary person | lifelong Republican
+49,3,49,147,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Caucasian person | non-binary person | lifelong Republican
+50,1,50,148,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Caucasian person | non-binary person | lifelong Democrat
+50,2,50,149,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Caucasian person | woman | lifelong Democrat
+50,3,50,150,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Hispanic person | man | lifelong Republican
+51,1,51,151,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | African person | transgender man | lifelong Republican
+51,2,51,152,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Asian person | woman | lifelong Republican
+51,3,51,153,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Hispanic person | non-binary person | lifelong Democrat
+52,1,52,154,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Caucasian person | non-binary person | lifelong Democrat
+52,2,52,155,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Caucasian person | woman | lifelong Republican
+52,3,52,156,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Hispanic person | non-binary person | lifelong Republican
+53,1,53,157,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | non-binary person | lifelong Democrat
+53,2,53,158,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Religious person | Caucasian person | man | lifelong Democrat
+53,3,53,159,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | man | lifelong Republican
+54,1,54,160,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Jewish person | African person | non-binary person | lifelong Republican
+54,2,54,161,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Caucasian person | woman | lifelong Democrat
+54,3,54,162,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Hispanic person | man | lifelong Democrat
+55,1,55,163,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | African person | man | lifelong Democrat
+55,2,55,164,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | African person | man | lifelong Democrat
+55,3,55,165,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | African person | man | lifelong Republican
+56,1,56,166,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | African person | woman | lifelong Democrat
+56,2,56,167,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Hispanic person | non-binary person | lifelong Republican
+56,3,56,168,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | non-binary person | lifelong Democrat
+57,1,57,169,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Caucasian person | transgender man | lifelong Democrat
+57,2,57,170,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Asian person | transgender man | lifelong Republican
+57,3,57,171,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Asian person | woman | lifelong Republican
+58,1,58,172,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Hispanic person | non-binary person | lifelong Democrat
+58,2,58,173,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | non-binary person | lifelong Republican
+58,3,58,174,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Caucasian person | man | lifelong Democrat
+59,1,59,175,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | African person | non-binary person | lifelong Democrat
+59,2,59,176,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Caucasian person | man | lifelong Democrat
+59,3,59,177,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | man | lifelong Democrat
+60,1,60,178,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | African person | man | lifelong Democrat
+60,2,60,179,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | African person | transgender man | lifelong Republican
+60,3,60,180,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Asian person | woman | lifelong Republican
+61,1,61,181,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Hispanic person | transgender man | lifelong Democrat
+61,2,61,182,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | transgender man | lifelong Democrat
+61,3,61,183,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Asian person | woman | lifelong Republican
+62,1,62,184,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Hispanic person | man | lifelong Democrat
+62,2,62,185,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | African person | transgender man | lifelong Republican
+62,3,62,186,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Asian person | non-binary person | lifelong Democrat
+63,1,63,187,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Caucasian person | non-binary person | lifelong Republican
+63,2,63,188,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Religious person | Caucasian person | non-binary person | lifelong Republican
+63,3,63,189,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Caucasian person | woman | lifelong Democrat
+64,1,64,190,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Hispanic person | non-binary person | lifelong Democrat
+64,2,64,191,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Caucasian person | man | lifelong Republican
+64,3,64,192,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | woman | lifelong Democrat
+65,1,65,193,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Hispanic person | transgender man | lifelong Republican
+65,2,65,194,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | non-binary person | lifelong Republican
+65,3,65,195,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Caucasian person | woman | lifelong Republican
+66,1,66,196,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Hispanic person | non-binary person | lifelong Republican
+66,2,66,197,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Caucasian person | transgender man | lifelong Democrat
+66,3,66,198,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Asian person | woman | lifelong Republican
+67,1,67,199,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Hispanic person | transgender man | lifelong Democrat
+67,2,67,200,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Asian person | transgender man | lifelong Republican
+67,3,67,201,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Asian person | woman | lifelong Democrat
+68,1,68,202,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Hispanic person | non-binary person | lifelong Republican
+68,2,68,203,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | man | lifelong Republican
+68,3,68,204,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | African person | woman | lifelong Republican
+69,1,69,205,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Hispanic person | non-binary person | lifelong Republican
+69,2,69,206,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Caucasian person | non-binary person | lifelong Republican
+69,3,69,207,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Caucasian person | woman | lifelong Republican
+70,1,70,208,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Hispanic person | transgender man | lifelong Democrat
+70,2,70,209,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Asian person | woman | lifelong Democrat
+70,3,70,210,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Hispanic person | man | lifelong Republican
+71,1,71,211,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | African person | woman | lifelong Republican
+71,2,71,212,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Hispanic person | non-binary person | lifelong Republican
+71,3,71,213,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | non-binary person | lifelong Democrat
+72,1,72,214,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Caucasian person | non-binary person | lifelong Democrat
+72,2,72,215,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Caucasian person | transgender man | lifelong Democrat
+72,3,72,216,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Asian person | transgender man | lifelong Republican
+73,1,73,217,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Asian person | woman | lifelong Republican
+73,2,73,218,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Hispanic person | man | lifelong Republican
+73,3,73,219,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | African person | non-binary person | lifelong Republican
+74,1,74,220,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Caucasian person | non-binary person | lifelong Democrat
+74,2,74,221,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Caucasian person | woman | lifelong Republican
+74,3,74,222,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Hispanic person | woman | lifelong Republican
+75,1,75,223,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Hispanic person | woman | lifelong Democrat
+75,2,75,224,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | Hispanic person | transgender man | lifelong Democrat
+75,3,75,225,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Asian person | transgender man | lifelong Republican
+76,1,76,226,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Asian person | woman | lifelong Democrat
+76,2,76,227,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Hispanic person | woman | lifelong Democrat
+76,3,76,228,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Hispanic person | transgender man | lifelong Democrat
+77,1,77,229,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Asian person | man | lifelong Republican
+77,2,77,230,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | African person | transgender man | lifelong Republican
+77,3,77,231,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Asian person | non-binary person | lifelong Democrat
+78,1,78,232,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Caucasian person | non-binary person | lifelong Democrat
+78,2,78,233,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Caucasian person | woman | lifelong Democrat
+78,3,78,234,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Hispanic person | woman | lifelong Republican
+79,1,79,235,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | Hispanic person | transgender man | lifelong Democrat
+79,2,79,236,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | transgender man | lifelong Republican
+79,3,79,237,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Asian person | woman | lifelong Republican
+80,1,80,238,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Hispanic person | woman | lifelong Democrat
+80,2,80,239,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | Hispanic person | transgender man | lifelong Republican
+80,3,80,240,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Asian person | woman | lifelong Democrat
+81,1,81,241,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Hispanic person | transgender man | lifelong Republican
+81,2,81,242,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | woman | lifelong Democrat
+81,3,81,243,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Hispanic person | transgender man | lifelong Republican
+82,1,82,244,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | woman | lifelong Republican
+82,2,82,245,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Hispanic person | transgender man | lifelong Republican
+82,3,82,246,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | Asian person | non-binary person | lifelong Democrat
+83,1,83,247,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Caucasian person | man | lifelong Democrat
+83,2,83,248,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | woman | lifelong Democrat
+83,3,83,249,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Jewish person | Hispanic person | transgender man | lifelong Republican
+84,1,84,250,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | non-binary person | lifelong Democrat
+84,2,84,251,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Caucasian person | man | lifelong Republican
+84,3,84,252,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Religious person | African person | non-binary person | lifelong Republican
+85,1,85,253,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Caucasian person | man | lifelong Democrat
+85,2,85,254,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | African person | man | lifelong Republican
+85,3,85,255,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Jewish person | African person | non-binary person | lifelong Republican
+86,1,86,256,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Caucasian person | man | lifelong Republican
+86,2,86,257,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Religious person | African person | transgender man | lifelong Democrat
+86,3,86,258,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Asian person | non-binary person | lifelong Democrat
+87,1,87,259,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Caucasian person | man | lifelong Republican
+87,2,87,260,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | non-binary person | lifelong Democrat
+87,3,87,261,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Jewish person | Caucasian person | non-binary person | lifelong Republican
+88,1,88,262,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Caucasian person | woman | lifelong Democrat
+88,2,88,263,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | Hispanic person | non-binary person | lifelong Democrat
+88,3,88,264,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | man | lifelong Republican
+89,1,89,265,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | African person | woman | lifelong Republican
+89,2,89,266,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Hispanic person | transgender man | lifelong Democrat
+89,3,89,267,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | Asian person | transgender man | lifelong Republican
+90,1,90,268,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Asian person | man | lifelong Democrat
+90,2,90,269,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | African person | woman | lifelong Republican
+90,3,90,270,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Hispanic person | man | lifelong Democrat
+91,1,91,271,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | African person | woman | lifelong Republican
+91,2,91,272,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Jewish person | Hispanic person | woman | lifelong Democrat
+91,3,91,273,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Hispanic person | transgender man | lifelong Republican
+92,1,92,274,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Asian person | transgender man | lifelong Democrat
+92,2,92,275,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Atheist person | Asian person | non-binary person | lifelong Democrat
+92,3,92,276,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Caucasian person | transgender man | lifelong Republican
+93,1,93,277,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Asian person | woman | lifelong Democrat
+93,2,93,278,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Hispanic person | non-binary person | lifelong Democrat
+93,3,93,279,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | transgender man | lifelong Republican
+94,1,94,280,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Asian person | transgender man | lifelong Democrat
+94,2,94,281,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Asian person | non-binary person | lifelong Democrat
+94,3,94,282,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Caucasian person | transgender man | lifelong Democrat
+95,1,95,283,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Religious person | Asian person | woman | lifelong Republican
+95,2,95,284,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | Hispanic person | non-binary person | lifelong Democrat
+95,3,95,285,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Christian person | Caucasian person | woman | lifelong Republican
+96,1,96,286,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Religious person | Hispanic person | transgender man | lifelong Democrat
+96,2,96,287,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | Asian person | man | lifelong Republican
+96,3,96,288,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Atheist person | African person | woman | lifelong Republican
+97,1,97,289,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Hispanic person | non-binary person | lifelong Republican
+97,2,97,290,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Caucasian person | man | lifelong Republican
+97,3,97,291,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Religious person | African person | woman | lifelong Republican
+98,1,98,292,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Hispanic person | transgender man | lifelong Republican
+98,2,98,293,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Asian person | woman | lifelong Republican
+98,3,98,294,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Atheist person | Hispanic person | woman | lifelong Republican
+99,1,99,295,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Christian person | Hispanic person | man | lifelong Democrat
+99,2,99,296,majority_mainstream,skeptical,general_belief_skeptical,physically-disabled person | Christian person | African person | man | lifelong Democrat
+99,3,99,297,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | African person | transgender man | lifelong Republican
+100,1,100,298,majority_mainstream,mainstream,general_belief_mainstream,physically-disabled person | Jewish person | Asian person | woman | lifelong Democrat
+100,2,100,299,majority_mainstream,skeptical,general_belief_skeptical,able-bodied person | Atheist person | Hispanic person | woman | lifelong Democrat
+100,3,100,300,majority_mainstream,mainstream,general_belief_mainstream,able-bodied person | Christian person | Hispanic person | man | lifelong Democrat
