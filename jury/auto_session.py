@@ -5,13 +5,13 @@ oTree's AssignVisitorToRoom.get so that when a participant arrives at a
 jury room URL we make sure the room has a session bound (and if the
 currently-bound session is filling up, we rotate to a fresh one).
 
-Per-room pool size is set very high (POOL_SIZE) so a single auto-created
-session covers all expected arrivals without rotation. Rotation kicks in
-defensively when fewer than ROTATE_WHEN_FREE_BELOW slots remain — new
-arrivals after that point land in the new session, while in-flight
-participants keep their existing player record (each Player.id and
-Participant.code is stable across rotation; the only thing rotation
-changes is which session NEW visitors get assigned to).
+POOL_SIZE is the per-session participant slot count. Each Session create
+inserts that many Participant rows synchronously, so a large pool makes
+the first-hit page slow and stresses Heroku Postgres under any kind of
+concurrent traffic. We keep it small (10) and rotate to a fresh session
+once the current one fills. Old in-flight participants keep their
+existing Player record (Participant.code is stable across rotation; only
+brand-new arrivals after rotation land in the new session).
 """
 from otree.database import db
 from otree.room import ROOM_DICT
@@ -19,14 +19,17 @@ from otree.session import create_session
 from otree.views.participant import AssignVisitorToRoom
 
 
-# Effectively-unlimited pool per session — 10k slots cost negligible DB
-# space and removes the practical ceiling on participants per room.
-POOL_SIZE = 10_000
+# Slots per auto-created session. Keep small — each create_session call
+# does N synchronous Participant INSERTs and an upfront `creating_session`
+# pass. Large values were observed to overload the web dyno and stack up
+# duplicate sessions when concurrent first-hits raced before any single
+# create_session committed.
+POOL_SIZE = 10
 
-# Spare slots maintained as headroom: when the active session has fewer
-# than this many free slots, the next arrival triggers a rotation so we
-# never hand out the literal last slot under contention.
-ROTATE_WHEN_FREE_BELOW = 50
+# Rotate only when literally no slots remain. With POOL_SIZE=10, a higher
+# threshold would force rotation on every visit (a brand-new session has
+# 10 free slots, which is < any threshold > 10), defeating reuse.
+ROTATE_WHEN_FREE_BELOW = 1
 
 JURY_ROOM_PREFIX = 'jury_room_'
 
