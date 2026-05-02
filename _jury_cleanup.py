@@ -10,6 +10,10 @@ Run modes:
     python _jury_cleanup.py count     # dry run — counts only, no writes
     python _jury_cleanup.py delete    # actually delete the empty sessions
 
+A "jury session" is identified as any session that has rows in
+jury_player (instead of joining session_config — that table doesn't
+exist in oTree 6.x; the config is a JSON column on otree_session).
+
 Safe to delete after the cleanup run is verified.
 """
 import sys
@@ -18,14 +22,18 @@ from sqlalchemy import inspect, text
 from otree.database import engine
 
 
+def fetch_jury_session_ids(conn):
+    return [r[0] for r in conn.execute(text("""
+        SELECT DISTINCT session_id FROM jury_player
+    """)).fetchall()]
+
+
 def fetch_empty_ids(conn):
     return [r[0] for r in conn.execute(text("""
-        SELECT s.id FROM otree_session s
-        JOIN otree_session_config sc ON sc.id = s.config_id
-        LEFT JOIN jury_player p ON p.session_id = s.id
+        SELECT p.session_id
+        FROM jury_player p
         LEFT JOIN jury_turn t ON t.player_id = p.id
-        WHERE sc.name LIKE 'jury_%'
-        GROUP BY s.id
+        GROUP BY p.session_id
         HAVING COUNT(t.id) = 0
     """)).fetchall()]
 
@@ -33,21 +41,18 @@ def fetch_empty_ids(conn):
 def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else 'count'
     print('Mode:', mode)
-    print('Tables present:', sorted(
+    tables = sorted(
         t for t in inspect(engine).get_table_names()
         if t.startswith(('jury_', 'otree_'))
-    ))
+    )
+    print('Tables present:', tables)
 
     with engine.connect() as conn:
-        total = conn.execute(text("""
-            SELECT COUNT(*) FROM otree_session s
-            JOIN otree_session_config sc ON sc.id = s.config_id
-            WHERE sc.name LIKE 'jury_%'
-        """)).scalar()
+        total_ids = fetch_jury_session_ids(conn)
         empty_ids = fetch_empty_ids(conn)
-        print(f'Total jury sessions:    {total}')
+        print(f'Total jury sessions:    {len(total_ids)}')
         print(f'Empty (to delete):       {len(empty_ids)}')
-        print(f'Populated (keep):        {total - len(empty_ids)}')
+        print(f'Populated (keep):        {len(total_ids) - len(empty_ids)}')
 
         if mode != 'delete':
             print('Dry run only. Re-run with `delete` to actually remove.')
@@ -60,20 +65,31 @@ def main():
         params = {f'id{i}': v for i, v in enumerate(empty_ids)}
 
         # Unbind rooms whose currently-bound session is being deleted.
-        # The schema differs between oTree versions; try the dedicated
-        # binding table first, fall back to a column on otree_session.
-        try:
+        # oTree 6.x uses `otree_roomtosession`; older versions used
+        # `otree_room_to_session`; some forks store room_name on
+        # otree_session itself. Try them in order.
+        room_table = next(
+            (t for t in ('otree_roomtosession', 'otree_room_to_session')
+             if t in tables),
+            None,
+        )
+        if room_table is not None:
             conn.execute(text(
-                f"UPDATE otree_room_to_session SET session_id = NULL "
+                f"DELETE FROM {room_table} "
                 f"WHERE session_id IN ({placeholders})"
             ), params)
-        except Exception as e:
-            print('otree_room_to_session not present; falling back to '
-                  'otree_session.room_name:', e)
-            conn.execute(text(
-                f"UPDATE otree_session SET room_name = NULL "
-                f"WHERE id IN ({placeholders})"
-            ), params)
+            print(f'Cleared {room_table} bindings for the empty sessions.')
+        else:
+            # Fall back to a column-based binding if it exists.
+            cols = {c['name'] for c in inspect(engine).get_columns('otree_session')}
+            if 'room_name' in cols:
+                conn.execute(text(
+                    f"UPDATE otree_session SET room_name = NULL "
+                    f"WHERE id IN ({placeholders})"
+                ), params)
+                print('Nulled otree_session.room_name for the empty sessions.')
+            else:
+                print('No room-binding table or column found; skipping unbind.')
 
         # Delete in FK-safe order: children first, then their parents.
         conn.execute(text(
