@@ -47,7 +47,11 @@ def main():
     )
     print('Tables present:', tables)
 
-    with engine.connect() as conn:
+    # `engine.begin()` opens a transaction and commits when the `with`
+    # block exits — works in both SQLAlchemy 1.3.x (which is what
+    # Heroku's older oTree pin uses; Connection.commit() is missing
+    # there) and 2.x.
+    with engine.begin() as conn:
         total_ids = fetch_jury_session_ids(conn)
         empty_ids = fetch_empty_ids(conn)
         print(f'Total jury sessions:    {len(total_ids)}')
@@ -111,7 +115,6 @@ def main():
         conn.execute(text(
             f"DELETE FROM otree_session WHERE id IN ({placeholders})"
         ), params)
-        conn.commit()
 
     print('Done.')
 
